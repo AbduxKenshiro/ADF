@@ -1,0 +1,17 @@
+{
+	"name": "source08",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage01",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": "destination"
+			}
+		}
+	}
+}
