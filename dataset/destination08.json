@@ -1,5 +1,5 @@
 {
-	"name": "info_files",
+	"name": "source08",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureBlobStorage01",
@@ -10,8 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "info.txt",
-				"container": "source"
+				"container": "destination"
 			}
 		}
 	}
