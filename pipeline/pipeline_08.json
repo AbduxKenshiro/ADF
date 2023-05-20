@@ -35,13 +35,13 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "info_files",
+						"referenceName": "source08",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "source08",
+						"referenceName": "destination08",
 						"type": "DatasetReference"
 					}
 				]
@@ -67,7 +67,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "info_files",
+						"referenceName": "source08",
 						"type": "DatasetReference"
 					},
 					"logStorageSettings": {

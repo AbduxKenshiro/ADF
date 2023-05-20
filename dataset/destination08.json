@@ -1,5 +1,5 @@
 {
-	"name": "source08",
+	"name": "destination08",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureBlobStorage01",
