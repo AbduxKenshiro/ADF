@@ -92,6 +92,33 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/GetMetaData')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage01",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"container": "source"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": false,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureBlobStorage01')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/destination08')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -421,7 +448,7 @@
 						"userProperties": [],
 						"typeProperties": {
 							"dataset": {
-								"referenceName": "CSV_source",
+								"referenceName": "GetMetaData",
 								"type": "DatasetReference",
 								"parameters": {}
 							},
@@ -507,7 +534,7 @@
 											"type": "DatasetReference",
 											"parameters": {
 												"fileName": {
-													"value": "@item().name",
+													"value": "@concat(replace(item().name, '.txt', ''))",
 													"type": "Expression"
 												}
 											}
@@ -532,6 +559,7 @@
 				"annotations": []
 			},
 			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/GetMetaData')]",
 				"[concat(variables('factoryId'), '/datasets/CSV_source')]",
 				"[concat(variables('factoryId'), '/datasets/CSV_destination')]"
 			]
