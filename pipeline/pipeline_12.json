@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "source08",
+						"referenceName": "GetMetaData",
 						"type": "DatasetReference"
 					},
 					"fieldList": [
@@ -24,10 +24,11 @@
 					],
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
+						"recursive": true,
 						"enablePartitionDiscovery": false
 					},
 					"formatSettings": {
-						"type": "BinaryReadSettings"
+						"type": "DelimitedTextReadSettings"
 					}
 				}
 			},
@@ -100,7 +101,7 @@
 									"type": "DatasetReference",
 									"parameters": {
 										"fileName": {
-											"value": "@item().name",
+											"value": "@concat(replace(item().name, '.txt', ''))",
 											"type": "Expression"
 										}
 									}
