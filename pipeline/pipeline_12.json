@@ -101,7 +101,7 @@
 									"type": "DatasetReference",
 									"parameters": {
 										"fileName": {
-											"value": "@concat(replace(item().name, '.txt', ''))",
+											"value": "@concat(substring(item().name, 0, lastIndexOf(item().name, '_')))",
 											"type": "Expression"
 										}
 									}
