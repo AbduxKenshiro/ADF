@@ -1,0 +1,17 @@
+{
+	"name": "inputFolder",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage01",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": "source"
+			}
+		}
+	}
+}
