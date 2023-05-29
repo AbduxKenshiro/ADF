@@ -1,0 +1,18 @@
+{
+	"name": "BlobBinaryDestinationFolder",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage01",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": "destination"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

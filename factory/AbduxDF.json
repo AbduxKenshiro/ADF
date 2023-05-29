@@ -1,0 +1,9 @@
+{
+	"name": "AbduxDF",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "f066541d-867c-40f7-a8f7-875f87a1a7ba",
+		"tenantId": "307c0d7b-6dc8-4ae6-bbd9-9e829c77fea9"
+	}
+}

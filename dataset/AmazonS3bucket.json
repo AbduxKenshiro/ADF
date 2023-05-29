@@ -1,0 +1,19 @@
+{
+	"name": "AmazonS3bucket",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AmazonS3bucket",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AmazonS3Location",
+				"bucketName": "adf-bucket-abduxkenshiro",
+				"folderPath": "abdulaziz"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
