@@ -212,6 +212,87 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/22_StorageEventTrigger')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Copy data1",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "BinarySource",
+								"storeSettings": {
+									"type": "AzureBlobStorageReadSettings",
+									"recursive": true
+								},
+								"formatSettings": {
+									"type": "BinaryReadSettings"
+								}
+							},
+							"sink": {
+								"type": "BinarySink",
+								"storeSettings": {
+									"type": "AzureBlobStorageWriteSettings"
+								}
+							},
+							"enableStaging": false
+						},
+						"inputs": [
+							{
+								"referenceName": "22_sourceBlobBinary",
+								"type": "DatasetReference",
+								"parameters": {
+									"containerName": {
+										"value": "@pipeline().parameters.cNamePL",
+										"type": "Expression"
+									},
+									"fileName": {
+										"value": "@pipeline().parameters.fNamePL",
+										"type": "Expression"
+									}
+								}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "22_DestinationBinary",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {},
+					"cancelAfter": {}
+				},
+				"parameters": {
+					"cNamePL": {
+						"type": "string"
+					},
+					"fNamePL": {
+						"type": "string"
+					}
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/22_sourceBlobBinary')]",
+				"[concat(variables('factoryId'), '/datasets/22_DestinationBinary')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/pipeline_08')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
@@ -662,6 +743,65 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/inputFolder')]",
+				"[concat(variables('factoryId'), '/linkedServices/AzureBlobStorage01')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/22_DestinationBinary')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage01",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Binary",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"container": "destination"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureBlobStorage01')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/22_sourceBlobBinary')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage01",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"containerName": {
+						"type": "string"
+					},
+					"fileName": {
+						"type": "string"
+					}
+				},
+				"annotations": [],
+				"type": "Binary",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": {
+							"value": "@dataset().fileName",
+							"type": "Expression"
+						},
+						"container": {
+							"value": "@dataset().containerName",
+							"type": "Expression"
+						}
+					}
+				}
+			},
+			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/AzureBlobStorage01')]"
 			]
 		},
