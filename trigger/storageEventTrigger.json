@@ -1,0 +1,29 @@
+{
+	"name": "storageEventTrigger",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "22_StorageEventTrigger",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"fName": "@triggerBody().fileName",
+					"cName": "@triggerBody().folderPath"
+				}
+			}
+		],
+		"type": "BlobEventsTrigger",
+		"typeProperties": {
+			"blobPathBeginsWith": "/source/blobs/customer",
+			"blobPathEndsWith": ".txt",
+			"ignoreEmptyBlobs": true,
+			"scope": "/subscriptions/6fe876fd-ebbf-4c35-93ed-ed4d11723f70/resourceGroups/AbduxGroup/providers/Microsoft.Storage/storageAccounts/abduxstorage",
+			"events": [
+				"Microsoft.Storage.BlobCreated"
+			]
+		}
+	}
+}
