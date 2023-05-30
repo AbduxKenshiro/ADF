@@ -38,12 +38,12 @@
 						"referenceName": "22_sourceBlobBinary",
 						"type": "DatasetReference",
 						"parameters": {
-							"containerName": {
-								"value": "@pipeline().parameters.cName",
-								"type": "Expression"
-							},
 							"fileName": {
 								"value": "@pipeline().parameters.fName",
+								"type": "Expression"
+							},
+							"containerName": {
+								"value": "@pipeline().parameters.cName",
 								"type": "Expression"
 							}
 						}
@@ -58,10 +58,10 @@
 			}
 		],
 		"parameters": {
-			"cName": {
+			"fName": {
 				"type": "string"
 			},
-			"fName": {
+			"cName": {
 				"type": "string"
 			}
 		},
