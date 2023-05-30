@@ -23,6 +23,18 @@
 			"type": "string",
 			"defaultValue": "AKIAUZCH4LSYLQRJXL5Y"
 		},
+		"storageEventTrigger_properties_22_StorageEventTrigger_parameters_fName": {
+			"type": "string",
+			"defaultValue": "@triggerBody().fileName"
+		},
+		"storageEventTrigger_properties_22_StorageEventTrigger_parameters_cName": {
+			"type": "string",
+			"defaultValue": "@triggerBody().folderPath"
+		},
+		"storageEventTrigger_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/6fe876fd-ebbf-4c35-93ed-ed4d11723f70/resourceGroups/AbduxGroup/providers/Microsoft.Storage/storageAccounts/abduxstorage"
+		},
 		"containerUri": {
 			"type": "string",
 			"metadata": "URI to storage account containing linked ARM templates"
@@ -79,6 +91,15 @@
 				"parameters": {
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
+					},
+					"storageEventTrigger_properties_22_StorageEventTrigger_parameters_fName": {
+						"value": "[parameters('storageEventTrigger_properties_22_StorageEventTrigger_parameters_fName')]"
+					},
+					"storageEventTrigger_properties_22_StorageEventTrigger_parameters_cName": {
+						"value": "[parameters('storageEventTrigger_properties_22_StorageEventTrigger_parameters_cName')]"
+					},
+					"storageEventTrigger_properties_typeProperties_scope": {
+						"value": "[parameters('storageEventTrigger_properties_typeProperties_scope')]"
 					}
 				}
 			},

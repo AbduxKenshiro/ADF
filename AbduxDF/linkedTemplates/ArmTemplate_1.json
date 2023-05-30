@@ -6,6 +6,18 @@
 			"type": "string",
 			"metadata": "Data Factory name",
 			"defaultValue": "AbduxDF"
+		},
+		"storageEventTrigger_properties_22_StorageEventTrigger_parameters_fName": {
+			"type": "string",
+			"defaultValue": "@triggerBody().fileName"
+		},
+		"storageEventTrigger_properties_22_StorageEventTrigger_parameters_cName": {
+			"type": "string",
+			"defaultValue": "@triggerBody().folderPath"
+		},
+		"storageEventTrigger_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/6fe876fd-ebbf-4c35-93ed-ed4d11723f70/resourceGroups/AbduxGroup/providers/Microsoft.Storage/storageAccounts/abduxstorage"
 		}
 	},
 	"variables": {
@@ -190,6 +202,38 @@
 					"cancelAfter": {}
 				},
 				"annotations": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/storageEventTrigger')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Stopped",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "22_StorageEventTrigger",
+							"type": "PipelineReference"
+						},
+						"parameters": {
+							"fName": "[parameters('storageEventTrigger_properties_22_StorageEventTrigger_parameters_fName')]",
+							"cName": "[parameters('storageEventTrigger_properties_22_StorageEventTrigger_parameters_cName')]"
+						}
+					}
+				],
+				"type": "BlobEventsTrigger",
+				"typeProperties": {
+					"blobPathBeginsWith": "/source/blobs/customer",
+					"blobPathEndsWith": ".txt",
+					"ignoreEmptyBlobs": true,
+					"scope": "[parameters('storageEventTrigger_properties_typeProperties_scope')]",
+					"events": [
+						"Microsoft.Storage.BlobCreated"
+					]
+				}
 			},
 			"dependsOn": []
 		}

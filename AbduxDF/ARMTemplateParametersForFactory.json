@@ -16,6 +16,15 @@
 		},
 		"AmazonS3bucket_properties_typeProperties_accessKeyId": {
 			"value": "AKIAUZCH4LSYLQRJXL5Y"
+		},
+		"storageEventTrigger_properties_22_StorageEventTrigger_parameters_fName": {
+			"value": "@triggerBody().fileName"
+		},
+		"storageEventTrigger_properties_22_StorageEventTrigger_parameters_cName": {
+			"value": "@triggerBody().folderPath"
+		},
+		"storageEventTrigger_properties_typeProperties_scope": {
+			"value": "/subscriptions/6fe876fd-ebbf-4c35-93ed-ed4d11723f70/resourceGroups/AbduxGroup/providers/Microsoft.Storage/storageAccounts/abduxstorage"
 		}
 	}
 }
