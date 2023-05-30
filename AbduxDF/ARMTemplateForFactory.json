@@ -253,12 +253,12 @@
 								"referenceName": "22_sourceBlobBinary",
 								"type": "DatasetReference",
 								"parameters": {
-									"containerName": {
-										"value": "@pipeline().parameters.cNamePL",
+									"fileName": {
+										"value": "@pipeline().parameters.fName",
 										"type": "Expression"
 									},
-									"fileName": {
-										"value": "@pipeline().parameters.fNamePL",
+									"containerName": {
+										"value": "@pipeline().parameters.cName",
 										"type": "Expression"
 									}
 								}
@@ -278,10 +278,10 @@
 					"cancelAfter": {}
 				},
 				"parameters": {
-					"cNamePL": {
+					"fName": {
 						"type": "string"
 					},
-					"fNamePL": {
+					"cName": {
 						"type": "string"
 					}
 				},
@@ -778,10 +778,10 @@
 					"type": "LinkedServiceReference"
 				},
 				"parameters": {
-					"containerName": {
+					"fileName": {
 						"type": "string"
 					},
-					"fileName": {
+					"containerName": {
 						"type": "string"
 					}
 				},
