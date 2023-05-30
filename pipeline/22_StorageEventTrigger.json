@@ -39,11 +39,11 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"containerName": {
-								"value": "@pipeline().parameters.cNamePL",
+								"value": "@pipeline().parameters.cName",
 								"type": "Expression"
 							},
 							"fileName": {
-								"value": "@pipeline().parameters.fNamePL",
+								"value": "@pipeline().parameters.fName",
 								"type": "Expression"
 							}
 						}
@@ -58,10 +58,10 @@
 			}
 		],
 		"parameters": {
-			"cNamePL": {
+			"cName": {
 				"type": "string"
 			},
-			"fNamePL": {
+			"fName": {
 				"type": "string"
 			}
 		},
